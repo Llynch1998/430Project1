@@ -24,13 +24,18 @@ const getUsersMeta = (request, response) => respondJSONMeta(request, response, 2
 const notFoundMeta = (request, response) => respondJSONMeta(request, response, 404);
 
 
-const addUser = (request, response, body) => {
-  
+const addUser = (request,response, body) =>{
   const responseJSON = {
     message: 'Name and age are both required.',
   };
 
-  if (!body.name || !body.age) {
+  if (!body.game || !body.maxPlayers || !body.raid || !body.role) {
+    console.log(body.game);
+    console.log(body.maxPlayers);
+    console.log(body.raid);
+    console.log(body.role);
+
+
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
@@ -46,8 +51,8 @@ const addUser = (request, response, body) => {
   }
 
   
-  users[body.name].name = body.name;
-  users[body.name].age = body.age;
+  users[body.game].raid = body.raid;
+ 
 
   
   if (responseCode === 201) {
@@ -55,7 +60,40 @@ const addUser = (request, response, body) => {
     return respondJSON(request, response, responseCode, responseJSON);
   }
   return respondJSONMeta(request, response, responseCode);
-};
+}
+
+// const addUser = (request, response, body) => {
+  
+//   const responseJSON = {
+//     message: 'Name and age are both required.',
+//   };
+
+//   if (!body.name || !body.age) {
+//     responseJSON.id = 'missingParams';
+//     return respondJSON(request, response, 400, responseJSON);
+//   }
+
+  
+//   let responseCode = 201;
+
+//   if (users[body.name]) {
+//     responseCode = 204;
+//   } else {
+    
+//     users[body.name] = {};
+//   }
+
+  
+//   users[body.name].name = body.name;
+//   users[body.name].age = body.age;
+
+  
+//   if (responseCode === 201) {
+//     responseJSON.message = 'Created Successfully';
+//     return respondJSON(request, response, responseCode, responseJSON);
+//   }
+//   return respondJSONMeta(request, response, responseCode);
+// };
 
 const notFound = (request, response) => {
   const responseJSON = {

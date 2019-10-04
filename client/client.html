@@ -68,8 +68,11 @@
       const nameMethod = nameForm.getAttribute('method');
       
       
-      const nameField = nameForm.querySelector('#nameField');
-      const ageField = nameForm.querySelector('#ageField');
+      const gameField = nameForm.querySelector('#gameField');
+      const maxPlayersField = nameForm.querySelector('#maxPlayersField');
+      const playerField = nameForm.querySelector('#playerField');
+      const roleSelect = nameForm.querySelector('#roleSelect');
+
       
       
       const xhr = new XMLHttpRequest();
@@ -82,7 +85,7 @@
       
       xhr.onload = () => handleResponse(xhr,true);
       
-      const formData = `name=${nameField.value}&age=${ageField.value}`;
+      const formData = `game=${gameField.value}&maxPlayers=${maxPlayersField.value}&raid=${playerField.value}&role=${roleField.value}`;
 
       xhr.send(formData);
       e.preventDefault();
@@ -123,10 +126,19 @@
   <section id="top">
     <h3>POST Status Code Tests</h3>
     <form id="nameForm" action="/addUser" method="post">
-      <label for="name">Name: </label>
-      <input id="nameField" type="text" name="name" />
-      <label for="age">Age: </label>
-      <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
+      <label for="name">Game: </label>
+      <input id="gameField" type="text" name="name" />
+      <label for="age">Maximum Players: </label>
+      <input id="maxPlayersField" type="number" name="age" min="0" max="100" step="1"/>
+      <label for="raid">Raid name:</label>
+      <input id="raidField" type="text" name="raid">
+      <label for="role">Role:</label>
+      <select id="roleSelect" type="text" name="role">
+        <option value="Tank">Tank</option>
+        <option value="Healer">Healer</option>
+        <option value="Melee">Melee</option>
+        <option value="Range">Range</option>
+      </select>
       <input type="submit" value="Add User" />
     </form>
     <form id="userForm" action="/getUsers" method="get">
