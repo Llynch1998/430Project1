@@ -1,0 +1,29 @@
+{
+  "name": "430-proj-1",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Llynch1998/http-api-assignment-ii.git"
+  },
+  "author": "Wyatt Lynch",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Llynch1998/http-api-assignment-ii/issues"
+  },
+  "homepage": "https://github.com/Llynch1998/http-api-assignment-ii#readme",
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "description": ""
+}
