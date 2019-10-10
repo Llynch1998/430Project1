@@ -62,17 +62,15 @@
         }
     };
     
-    const sendPost = (e, nameForm) => {
+    const sendPost = (e, nameForm) => {//add debug
       
       const nameAction = nameForm.getAttribute('action');
       const nameMethod = nameForm.getAttribute('method');
       
       
       const gameField = nameForm.querySelector('#gameField');
-      const maxPlayersField = nameForm.querySelector('#maxPlayersField');
-      const playerField = nameForm.querySelector('#playerField');
-      const roleSelect = nameForm.querySelector('#roleSelect');
-
+      const maxPlayer = nameForm.querySelector('#maxPlayer');
+      const raid = nameForm.querySelector('#raidField');
       
       
       const xhr = new XMLHttpRequest();
@@ -84,8 +82,8 @@
       xhr.setRequestHeader ('Accept', 'application/json');
       
       xhr.onload = () => handleResponse(xhr,true);
-      
-      const formData = `game=${gameField.value}&maxPlayers=${maxPlayersField.value}&raid=${playerField.value}&role=${roleField.value}`;
+      console.log(gameField.value + " " + maxPlayer.value + " " + raid.value);
+      const formData = `game=${gameField.value}&maxP=${maxPlayer.value}&raid=${raid.value}`;
 
       xhr.send(formData);
       e.preventDefault();
@@ -109,7 +107,7 @@
         
       return false;
     }
-    const init = () => {
+    const init = () => {//add debug
       const nameForm = document.querySelector('#nameForm');
       
       const addUser = (e) => sendPost(e, nameForm);
@@ -126,19 +124,12 @@
   <section id="top">
     <h3>POST Status Code Tests</h3>
     <form id="nameForm" action="/addUser" method="post">
-      <label for="name">Game: </label>
-      <input id="gameField" type="text" name="name" />
-      <label for="age">Maximum Players: </label>
-      <input id="maxPlayersField" type="number" name="age" min="0" max="100" step="1"/>
-      <label for="raid">Raid name:</label>
-      <input id="raidField" type="text" name="raid">
-      <label for="role">Role:</label>
-      <select id="roleSelect" type="text" name="role">
-        <option value="Tank">Tank</option>
-        <option value="Healer">Healer</option>
-        <option value="Melee">Melee</option>
-        <option value="Range">Range</option>
-      </select>
+      <label for="game">Game: </label>
+      <input id="gameField" type="text" name="game" />
+      <label for="raid">Raid: </label>
+      <input id="raidField" type="text" name="raid" />
+      <label for="maxP">Max Players: </label>
+      <input id="maxPlayer" type="number" name="maxP" min="0" max="100" step="1"/>
       <input type="submit" value="Add User" />
     </form>
     <form id="userForm" action="/getUsers" method="get">

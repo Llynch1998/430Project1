@@ -11,7 +11,6 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 
 const handlePost = (request, response, parsedUrl) => {
-  
   if (parsedUrl.pathname === '/addUser') {
     const res = response;
     const body = [];
@@ -29,6 +28,7 @@ const handlePost = (request, response, parsedUrl) => {
     request.on('end', () => {
       const bodyString = Buffer.concat(body).toString();
       const bodyParams = query.parse(bodyString);
+      
       jsonHandler.addUser(request, res, bodyParams);
     });
   }
