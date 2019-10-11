@@ -22,9 +22,11 @@
       //if users in response, add to screen
       if(obj.users) {
         const userList = document.createElement('p');
-        const users = JSON.stringify(obj.users);
+        const users = JSON.stringify(obj.users);//check by the [key]
         userList.textContent = users;
         content.appendChild(userList);
+        //for each key in object.users{ object.users[key].raid}
+
       }
     };
     //function to handle our response

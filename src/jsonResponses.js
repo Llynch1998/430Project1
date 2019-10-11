@@ -44,7 +44,7 @@ const addUser = (request, response, body) => {
     responseCode = 204;
   } else {
     
-    users[body.game] = {};
+    users[body.game] = {};//body.game is the JSON "key" lateer, check by the key in order to get things in the key
   }
 
   
@@ -53,7 +53,7 @@ const addUser = (request, response, body) => {
 
   
   if (responseCode === 201) {
-    responseJSON.message = 'Created Successfully';
+    responseJSON.message = 'Raid Added';
     return respondJSON(request, response, responseCode, responseJSON);
   }
   return respondJSONMeta(request, response, responseCode);
