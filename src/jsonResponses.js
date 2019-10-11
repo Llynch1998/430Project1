@@ -44,7 +44,7 @@ const addUser = (request, response, body) => {
     responseCode = 204;
   } else {
     
-    users[body.game] = {};//body.game is the JSON "key" lateer, check by the key in order to get things in the key
+    users[body.game] = {};//body.game is the JSON "key" lateer, check by the key in order to get things in the key FUCKING CHANG ETO COUNTER
   }
 
   
