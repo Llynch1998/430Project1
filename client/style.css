@@ -1,8 +1,16 @@
+*{
+  margin:0;
+  padding: 0;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+body{
+  display: grid;
 }
 
 #top {
@@ -11,16 +19,56 @@ html, body {
 }
 
 #top h1 {
-  font-size: 2em;
+  
 }
 
 #content {
-  margin-top: 50px;
+  padding: 0;
   font-size: 2em;
   text-align: center;
+  width: 64%;
+  height: 100%;
+  background-color: #4D5E89;
 }
 
 #logoAsset{
+  margin-top: 10px;
+  margin-left:10px;
   width: 100px; /**/
   height: 167px;/*width to height is 1:1.67*/
+}
+
+#topLeft{
+  width: 23vw;
+  height: 17vh;
+  min-width: 222px;
+  min-height: 94px;
+  max-width: 444px;
+  max-height: 188px;
+  margin-top: 1vh;
+  
+}
+
+#sideBar{
+  width: 24%;
+  max-width: 464px;
+  min-width: 232px;
+  height: 100vh;
+  background-color: #487572;
+  display: flex;
+  justify-content: center;
+}
+
+.gameName{
+  margin: 10px 0 0 10px;
+  background-color: #C1D3F7;
+  border-radius: 25px;
+  font-size: large;
+}
+
+.gameData{
+  margin-left: 30px;
+  margin-top: 5px;
+  background-color: #C1D3F7;
+  border-radius: 25px;
 }
