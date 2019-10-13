@@ -64,7 +64,7 @@ const addUser = (request, response, body) => {
   ID++;
   
   if (responseCode === 201) {
-    responseJSON.message = 'Created Successfully';
+    responseJSON.message = 'Raid Added';
     return respondJSON(request, response, responseCode, responseJSON);
   }
   return respondJSONMeta(request, response, responseCode);
