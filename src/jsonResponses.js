@@ -1,4 +1,6 @@
 const users = {};
+let ID = 1;
+
 
 const respondJSON = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
@@ -42,15 +44,24 @@ const addUser = (request, response, body) => {
 
   if (users[body.game]) {
     responseCode = 204;
+    users[body.game][ID] = {};
+    users[body.game][ID].id = ID;
+    users[body.game][ID].raid = body.raid;
+    users[body.game][ID].maxP = body.maxP;
+  
   } else {
     
     users[body.game] = {};
+    users[body.game].game = body.game;
+    users[body.game][ID] = {};
+    users[body.game][ID].id = ID;
+    console.dir(users[body.game].id);
+    users[body.game][ID].raid = body.raid;
+    users[body.game][ID].maxP = body.maxP;
   }
 
   
-  users[body.game].raid = body.raid;
-  users[body.game].maxP = body.maxP;
-
+  ID++;
   
   if (responseCode === 201) {
     responseJSON.message = 'Created Successfully';

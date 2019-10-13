@@ -15,7 +15,12 @@ html, body {
 }
 
 #content {
-  margin-top: 100px;
+  margin-top: 50px;
   font-size: 2em;
   text-align: center;
+}
+
+#logoAsset{
+  width: 100px; /**/
+  height: 167px;/*width to height is 1:1.67*/
 }
