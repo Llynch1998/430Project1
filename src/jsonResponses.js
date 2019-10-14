@@ -25,16 +25,38 @@ const getUsersMeta = (request, response) => respondJSONMeta(request, response, 2
 
 const notFoundMeta = (request, response) => respondJSONMeta(request, response, 404);
 
+const increment = (request, response, body) =>{
+  const responseJSON = {
+    message: 'Please fill in all the fields',
+  };
+  console.log(body.id);
+  if (!body.id) {
+    responseJSON.id = 'missingParams';
+    return respondJSON(request, response, 400, responseJSON);
+  }
 
-const addUser = (request, response, body,id) => {
+  
+  let responseCode = 201;
+  for(let key in users){
+    for(let ID in users[key]){
+      if(body.id == users[key][ID].id){
+        if(users[key][ID].currentPlayers < users[key][ID].maxPlayers){
+          users[key][ID].currentPlayers++;
+        }
+      }
+    }
+  }
+  
+  
+  return respondJSON(request, response, responseCode);
+}
+const addUser = (request, response, body) => {
   
   const responseJSON = {
     message: 'Please fill in all the fields',
   };
 
   if (!body.game || !body.maxP || !body.raid) {
-    console.log(body.game);
-    console.log(body.maxP);
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
@@ -48,7 +70,7 @@ const addUser = (request, response, body,id) => {
       users[body.game][ID].id = ID;
       users[body.game][ID].raid = body.raid;
       users[body.game][ID].maxPlayers = body.maxP;
-      users[body.game][ID].currentPlayers = 0;
+      users[body.game][ID].currentPlayers = 1;
     
   
   } else {
@@ -57,10 +79,9 @@ const addUser = (request, response, body,id) => {
     users[body.game].game = body.game;
     users[body.game][ID] = {};
     users[body.game][ID].id = ID;
-    console.dir(users[body.game].id);
     users[body.game][ID].raid = body.raid;
     users[body.game][ID].maxPlayers = body.maxP;
-    users[body.game][ID].currentPlayers = 0;
+    users[body.game][ID].currentPlayers = 1;
   }
 
   
