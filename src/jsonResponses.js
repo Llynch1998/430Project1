@@ -26,7 +26,7 @@ const getUsersMeta = (request, response) => respondJSONMeta(request, response, 2
 const notFoundMeta = (request, response) => respondJSONMeta(request, response, 404);
 
 
-const addUser = (request, response, body) => {
+const addUser = (request, response, body,id) => {
   
   const responseJSON = {
     message: 'Please fill in all the fields',
@@ -44,10 +44,12 @@ const addUser = (request, response, body) => {
 
   if (users[body.game]) {
     responseCode = 204;
-    users[body.game][ID] = {};
-    users[body.game][ID].id = ID;
-    users[body.game][ID].raid = body.raid;
-    users[body.game][ID].maxP = body.maxP;
+      users[body.game][ID] = {};
+      users[body.game][ID].id = ID;
+      users[body.game][ID].raid = body.raid;
+      users[body.game][ID].maxPlayers = body.maxP;
+      users[body.game][ID].currentPlayers = 0;
+    
   
   } else {
     
@@ -57,7 +59,8 @@ const addUser = (request, response, body) => {
     users[body.game][ID].id = ID;
     console.dir(users[body.game].id);
     users[body.game][ID].raid = body.raid;
-    users[body.game][ID].maxP = body.maxP;
+    users[body.game][ID].maxPlayers = body.maxP;
+    users[body.game][ID].currentPlayers = 0;
   }
 
   
