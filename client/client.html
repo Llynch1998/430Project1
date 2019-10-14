@@ -11,7 +11,7 @@
     const parseJSON = (xhr, content) => {
       //parse response (obj will be empty in a 204 updated)
       const obj = JSON.parse(xhr.response);
-      console.dir(obj);
+      //console.dir(obj);
       
       //if message in response, add to screen
       // if(obj.message) {
@@ -36,9 +36,9 @@
               const gameName = document.createElement('p');
             // console.log(key);
             // console.log(obj.users[key]);
-            console.log(obj.users[key][ID].id);
+            //console.log(obj.users[key][ID].id);
             if(obj.users[key][ID].id){
-              gameName.innerHTML = `ID[${obj.users[key][ID].id}] Game: ${obj.users[key].game} Raid: ${obj.users[key][ID].raid} Players: ${obj.users[key][ID].currentPlayers}/${obj.users[key][ID].maxPlayers}<input type="button" value="Join" class="joinBtn"></input>`;
+              gameName.innerHTML = `ID[${obj.users[key][ID].id}] Game: ${obj.users[key].game} Raid: ${obj.users[key][ID].raid} Players: ${obj.users[key][ID].currentPlayers}/${obj.users[key][ID].maxPlayers}`;
               gameName.classList.add("gameName");
             div.appendChild(gameName);
             }
@@ -87,14 +87,14 @@
             console.log('received')
         }
     };
-    const sendJoin = (e,form) =>{
-      const nameAction = nameForm.getAttribute('action');
-      const nameMethod = nameForm.getAttribute('method');
-      const idField = nameForm.querySelector('#idField');
+    const sendJoin = (e,idForm) =>{
+      const idAction = idForm.getAttribute('action');
+      const idMethod = idForm.getAttribute('method');
+      const idField = idForm.querySelector('#idField');
 
       const xhr = new XMLHttpRequest();
       
-      xhr.open(nameMethod, nameAction);
+      xhr.open(idMethod, idAction);
 
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       
@@ -105,8 +105,8 @@
       const formData = `id=${idField.value}`;
       xhr.send(formData);
       e.preventDefault();
-      idField.value = '';
-      sendGet(e,nameForm);
+      
+      sendGet(e,idForm);
       return false;
 
     }

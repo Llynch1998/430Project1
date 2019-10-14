@@ -29,7 +29,7 @@ const increment = (request, response, body) =>{
   const responseJSON = {
     message: 'Please fill in all the fields',
   };
-  console.log(body.id);
+  //console.log(body.id);
   if (!body.id) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
