@@ -32,7 +32,7 @@ const handlePost = (request, response, parsedUrl) => {
       jsonHandler.addUser(request, res, bodyParams);
     });
   }
-  else if(parsedUrl.pathname === '/increment'){
+  if (parsedUrl.pathname === '/increment') {
     const res = response;
     const body = [];
 
@@ -50,7 +50,7 @@ const handlePost = (request, response, parsedUrl) => {
       const bodyString = Buffer.concat(body).toString();
       const bodyParams = query.parse(bodyString);
       
-      jsonHandler.addUser(request, res, bodyParams);
+      jsonHandler.increment(request, res, bodyParams);
     });
   }
 };

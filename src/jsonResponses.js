@@ -29,7 +29,7 @@ const increment = (request, response, body) =>{
   const responseJSON = {
     message: 'Please fill in all the fields',
   };
-  //console.log(body.id);
+
   if (!body.id) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
@@ -37,18 +37,28 @@ const increment = (request, response, body) =>{
 
   
   let responseCode = 201;
+  let found = false;
   for(let key in users){
     for(let ID in users[key]){
       if(body.id == users[key][ID].id){
         if(users[key][ID].currentPlayers < users[key][ID].maxPlayers){
           users[key][ID].currentPlayers++;
+          console.log(users[key][ID].currentPlayers);
+          found = true;
         }
       }
     }
   }
+  if(found){
+    responseJSON.message = 'Added User'
+  }
+  else{
+    responseJSON.message = 'not a valid ID'
+    responseCode = 400;
+  }
   
   
-  return respondJSON(request, response, responseCode);
+  return respondJSON(request, response, responseCode,responseJSON);
 }
 const addUser = (request, response, body) => {
   
@@ -113,4 +123,5 @@ module.exports = {
   notFound,
   getUsersMeta,
   notFoundMeta,
+  increment,
 };

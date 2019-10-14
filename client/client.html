@@ -7,7 +7,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
   <script type="text/babel">
     //function to parse our response
-
+    
     const parseJSON = (xhr, content) => {
       //parse response (obj will be empty in a 204 updated)
       const obj = JSON.parse(xhr.response);
@@ -101,12 +101,12 @@
       xhr.setRequestHeader ('Accept', 'application/json');
       
       xhr.onload = () => handleResponse(xhr,true);
-
+      
       const formData = `id=${idField.value}`;
       xhr.send(formData);
       e.preventDefault();
       
-      sendGet(e,idForm);
+      sendGet(e, idField);
       return false;
 
     }
@@ -164,9 +164,9 @@
     const init = (e) => {//add debug
       const nameForm = document.querySelector('#nameForm');
       const idForm = document.querySelector('#idForm');
-      const join = (e) => sendJoin(e, idForm);
+      const joinRaid = (e) => sendJoin(e, idForm);
       const addUser = (e) => sendPost(e, nameForm);
-      idForm.addEventListener('submit', join);
+      idForm.addEventListener('submit', joinRaid);
       nameForm.addEventListener('submit', addUser);
       //const userForm = document.querySelector('#userForm');
       const getUser = (e) => sendGet(e, nameForm);
@@ -195,7 +195,7 @@
       
       <input type="submit" value="Add User" />
     </form>
-    <form id="idForm" action="/increment" method="post">
+    <form id="idForm" action="/increment" method="POST">
       <label for="join">Join: </label>
       <input id="idField" type="number" min="1" name="join" />
       <input type="submit" value="Join" />
