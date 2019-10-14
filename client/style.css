@@ -82,4 +82,19 @@ body{
   border-radius: 25px;
 }
 
+#nameForm{
+  background-color: #C1D3F7;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 25px;
+  width: max-content;
+}
+
+#idForm{
+  margin: 10px;
+  padding: 5px;
+  background-color: #C1D3F7;
+  border-radius: 25px;
+  width: max-content;
+}
 
